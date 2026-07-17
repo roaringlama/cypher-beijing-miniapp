@@ -1,0 +1,33 @@
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+.test-build/
+*.zip
+
+# WeChat DevTools local state and real credentials
+project.private.config.json
+private.config.json
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+secrets/
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs and temporary files
+*.log
+npm-debug.log*
+tmp/
+.cache/
