@@ -1,0 +1,49 @@
+<view class="profile-page {{settings.reducedMotion ? 'reduced-motion' : ''}}">
+  <view class="profile-hero">
+    <view class="profile-top"><view class="wordmark">CYPHER<text>///</text></view><button class="settings-button">•••</button></view>
+    <view class="profile-grid">
+      <view class="portrait"><view class="portrait-rings"></view><text>MW</text><view class="online"></view></view>
+      <view class="identity"><text class="eyebrow">MY CIRCLE</text><view class="dancer-name">{{user.dancerName}}</view><view class="identity-line">POPPING · CHAOYANG</view><view class="crew">CREW / {{user.crew}}</view></view>
+    </view>
+    <view class="bio">“{{user.bio}}”</view>
+    <view class="social-row"><button bindtap="copyInstagram">@{{user.instagram}} <text>COPY</text></button><view>{{user.danceYears}} YRS MOVING</view></view>
+  </view>
+
+  <view class="profile-body">
+    <view class="level-card">
+      <view class="level-sticker"><text>{{level.code}}</text><view>{{levelName}}</view></view>
+      <view class="level-main"><text class="level-label">COMMUNITY ENERGY</text><view class="points">{{user.points}}<text> GROOVE PTS</text></view><view class="level-track"><view style="width: {{levelProgress}}%"></view></view><text class="muted">{{pointsToNext}} pts to {{nextLevelName}}</text></view>
+      <view class="level-note">NOT A<br/>SKILL SCORE</view>
+    </view>
+
+    <view class="stat-strip">
+      <view><text>{{user.stats.completedActivities}}</text><view>SHOWED UP</view></view><view><text>{{user.stats.hostedActivities}}</text><view>HOSTED</view></view><view><text>{{user.stats.noShows}}</text><view>NO-SHOWS</view></view>
+    </view>
+
+    <view class="profile-section">
+      <view class="section-heading"><view><text class="section-number">01</text><text class="section-title">MY GROOVE</text></view><text class="see-all">EDIT →</text></view>
+      <view class="style-stack"><view class="style-primary"><text>PRIMARY</text><view>POPPING</view><text>FUNK · BOOGALOO · PARTY GROOVE</text></view><view class="style-secondary">＋ HIP-HOP</view></view>
+    </view>
+
+    <view class="profile-section">
+      <view class="section-heading"><view><text class="section-number">02</text><text class="section-title">BADGES ON DECK</text></view></view>
+      <scroll-view scroll-x class="badge-scroll" show-scrollbar="false"><view class="badge-row"><view class="badge-card acid"><view>✓</view><text>RELIABLE<br/>GROOVER</text></view><view class="badge-card violet"><view>◎</view><text>EARLY<br/>CIRCLE</text></view><view class="badge-card locked"><view>⌁</view><text>HOST 5<br/>CYPHERS</text></view></view></scroll-view>
+    </view>
+
+    <view class="profile-section settings-card card">
+      <text class="eyebrow">FEEDBACK SETTINGS</text>
+      <button class="setting-row" data-key="soundEnabled" bindtap="toggleSetting"><view><view>Sound hits</view><text>轻量、可替换的占位音效</text></view><view class="switch {{settings.soundEnabled ? 'on' : ''}}"><view></view></view></button>
+      <button class="setting-row" data-key="hapticsEnabled" bindtap="toggleSetting"><view><view>Haptics</view><text>关键动作的轻震反馈</text></view><view class="switch {{settings.hapticsEnabled ? 'on' : ''}}"><view></view></view></button>
+      <button class="setting-row" data-key="reducedMotion" bindtap="toggleSetting"><view><view>Reduce motion</view><text>关闭旋转、弹跳和大位移动画</text></view><view class="switch {{settings.reducedMotion ? 'on' : ''}}"><view></view></view></button>
+    </view>
+
+    <button class="support-banner" bindtap="openSupport"><view><text>SUPPORT THE SCENE</text><view>给服务器续点命</view></view><view>¥ ↗</view></button>
+    <view class="manifesto">DANCE MORE.<br/><text>RANK LESS.</text></view>
+  </view>
+
+  <view class="bottom-nav">
+    <button class="nav-item" bindtap="goHome"><view class="nav-glyph">◉</view><text>FIND</text></button>
+    <button class="nav-create" bindtap="openCreate"><text>＋</text></button>
+    <button class="nav-item active"><view class="nav-glyph">◎</view><text>ME</text></button>
+  </view>
+</view>

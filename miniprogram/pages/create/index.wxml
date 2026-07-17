@@ -1,0 +1,74 @@
+<view class="create-page {{reducedMotion ? 'reduced-motion' : ''}}">
+  <view class="create-topbar">
+    <button class="back-button" bindtap="back">←</button>
+    <view class="create-wordmark">DROP A CYPHER</view>
+    <view class="draft-pill">DRAFT</view>
+  </view>
+
+  <view class="stepper">
+    <view wx:for="{{steps}}" wx:key="*this" class="step-item {{index === step ? 'active' : ''}} {{index < step ? 'done' : ''}}">
+      <view class="step-dot">{{index < step ? '✓' : index + 1}}</view>
+      <text>{{item}}</text>
+    </view>
+    <view class="step-line"><view style="width: {{step * 25}}%"></view></view>
+  </view>
+
+  <view class="form-scroll">
+    <view wx:if="{{step === 0}}" class="step-panel vibe-step">
+      <text class="eyebrow">STEP 01 / 05</text>
+      <view class="form-title">WHAT’S<br/>THE <text>VIBE?</text></view>
+      <view class="prompt">先给这场的气质定个调。</view>
+      <view class="field-label">CYPHER NAME</view>
+      <view class="input-shell"><input class="big-input" value="{{title}}" maxlength="30" bindinput="updateTitle"/><text>{{titleLength}} / 30</text></view>
+      <view class="field-label">MAIN STYLE</view>
+      <view class="choice-grid">
+        <button wx:for="{{styles}}" wx:key="*this" data-value="{{item}}" bindtap="selectStyle" class="choice-card {{selectedStyle === item ? 'selected' : ''}}">
+          <view class="choice-icon">{{index === 0 ? '∿' : index === 1 ? '↯' : index === 2 ? '◎' : '✦'}}</view><text>{{item}}</text>
+        </button>
+      </view>
+      <view class="field-label">FLAVOUR TAGS <text>UP TO 3</text></view>
+      <view class="tag-picker"><button wx:for="{{tagOptions}}" wx:key="label" data-value="{{item.label}}" bindtap="toggleTag" class="pick-tag {{item.selected ? 'selected' : ''}}">{{item.selected ? '✓ ' : '+ '}}{{item.label}}</button></view>
+    </view>
+
+    <view wx:elif="{{step === 1}}" class="step-panel">
+      <text class="eyebrow">STEP 02 / 05</text><view class="form-title">WHEN DO<br/>WE <text>MOVE?</text></view><view class="prompt">时间明确，大家才好留出 groove。</view>
+      <picker mode="date" value="{{dateValue}}" start="2026-07-15" bindchange="changeDate"><view class="poster-field"><text class="field-label">DATE</text><view>{{date}}</view><text>点按更换 →</text></view></picker>
+      <view class="time-fields"><picker mode="time" value="{{startTime}}" bindchange="changeStartTime"><view class="poster-field"><text class="field-label">START</text><view>{{startTime}}</view><text>开始时间</text></view></picker><picker mode="time" value="{{endTime}}" bindchange="changeEndTime"><view class="poster-field"><text class="field-label">END</text><view>{{endTime}}</view><text>结束时间</text></view></picker></view>
+      <view class="mini-calendar"><view wx:for="{{['MON','TUE','WED','THU','FRI','SAT','SUN']}}" wx:key="*this" class="{{item === 'SAT' ? 'active' : ''}}"><text>{{item}}</text><view>{{20 + index}}</view></view></view>
+    </view>
+
+    <view wx:elif="{{step === 2}}" class="step-panel">
+      <text class="eyebrow">STEP 03 / 05</text><view class="form-title">WHERE’S<br/>THE <text>SPOT?</text></view><view class="prompt">先公开区域，详细门牌可在通过后显示。</view>
+      <view class="map-card"><view class="map-ring"></view><view class="map-pin">●</view><text>BEIJING / CHAOYANG</text></view>
+      <picker mode="selector" range="{{districtOptions}}" value="{{districtIndex}}" bindchange="changeDistrict"><view class="poster-field"><text class="field-label">DISTRICT</text><view>{{district}}</view><text>点按更换 →</text></view></picker>
+      <view class="poster-field"><text class="field-label">VENUE</text><input class="venue-input" value="{{venue}}" maxlength="30" bindinput="updateVenue"/><text>详细地址已保护</text></view>
+      <view class="privacy-note"><text>⌁</text><view><view>报名后解锁门牌</view><text>只有发起者和通过报名的人能看到。</text></view></view>
+    </view>
+
+    <view wx:elif="{{step === 3}}" class="step-panel">
+      <text class="eyebrow">STEP 04 / 05</text><view class="form-title">WHO’S<br/><text>COMING?</text></view><view class="prompt">设一个让圈子舒服运转的人数。</view>
+      <view class="capacity-card"><text class="field-label">MAX CIRCLE SIZE</text><view class="capacity-control"><button bindtap="decreaseCapacity">−</button><view class="capacity-number">{{maxParticipants}}</view><button bindtap="increaseCapacity">＋</button></view><view class="capacity-track"><view></view></view><text class="muted">6–30 人，建议 12–24 人，留出每个人进圈的空间。</text></view>
+      <button class="toggle-row" bindtap="toggleBeginner"><view><view>新手友好</view><text>允许先在外圈观察</text></view><view class="switch {{beginnerFriendly ? 'on' : ''}}"><view></view></view></button>
+      <button class="toggle-row" bindtap="toggleApproval"><view><view>发起者审核</view><text>关闭时直接加入</text></view><view class="switch {{approvalRequired ? 'on' : ''}}"><view></view></view></button>
+      <view class="promise-card"><text>THE CIRCLE PROMISE</text><view>尊重音乐 · 尊重空间 · 计划有变尽早退出</view></view>
+    </view>
+
+    <view wx:else class="step-panel final-step">
+      <text class="eyebrow">STEP 05 / 05</text><view class="form-title">FINAL<br/><text>CHECK.</text></view><view class="prompt">确认没问题，就把这张 flyer 发出去。</view>
+      <view class="preview-poster"><view class="preview-stamp">CYPHER<br/>DROP</view><text>{{date}}</text><view>{{title}}</view><text>{{selectedStyle}} · {{tagsText}}</text><text>{{venue}}</text></view>
+      <view class="check-list"><view><text>WHEN</text><view>{{date}} · {{time}}</view></view><view><text>WHO</text><view>{{maxParticipants}} 人 · {{beginnerFriendly ? '新手友好' : '有参与门槛'}}</view></view><view><text>JOIN</text><view>{{approvalRequired ? '发起者审核' : '直接加入'}}</view></view></view>
+    </view>
+  </view>
+
+  <view class="create-dock">
+    <view class="progress-copy"><text>0{{step + 1}}</text> / 05</view>
+    <button wx:if="{{step < 4}}" class="primary-button next-button" bindtap="next" disabled="{{!featureEnabled}}">{{featureEnabled ? 'NEXT STEP →' : 'CYPHER CREATE OFF'}}</button>
+    <button wx:else class="primary-button next-button" bindtap="publish" disabled="{{!featureEnabled}}">{{featureEnabled ? 'DROP THIS CYPHER ↗' : 'CYPHER CREATE OFF'}}</button>
+  </view>
+
+  <view wx:if="{{published}}" class="publish-overlay">
+    <view class="success-record"><view class="success-hole"></view><text>LIVE</text></view>
+    <text class="eyebrow">MOCK PUBLISHED</text><view class="success-title">YOUR CIRCLE<br/>IS <text>OPEN.</text></view><text class="success-copy">原型模式没有写入云端，但完整发布反馈已经验证。</text>
+    <button class="primary-button" bindtap="finish">BACK TO THE SCENE</button>
+  </view>
+</view>

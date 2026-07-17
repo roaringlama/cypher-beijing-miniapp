@@ -1,0 +1,37 @@
+<view class="support-page {{reducedMotion ? 'reduced-motion' : ''}}">
+  <view class="support-hero">
+    <view class="support-topbar"><button class="round-action" bindtap="goBack">←</button><view class="test-badge"><text>●</text> TEST MODE</view><view class="round-action ghost">?</view></view>
+    <view class="speaker speaker-left"><view></view><view></view></view><view class="speaker speaker-right"><view></view><view></view></view>
+    <view class="support-record"><view>CB</view></view>
+    <view class="hero-copy"><text class="eyebrow">FOR THE PEOPLE KEEPING IT MOVING</text><view class="support-title">SUPPORT<br/>THE <text>SCENE.</text></view><view class="support-subtitle">核心功能永远免费。你支持的是平台维护，<br/>不是舞者排名，也不会购买任何特权。</view></view>
+    <view class="sound-wave">▂▅▃▇▂▆▃▅▂▇▃▆▂▅</view>
+  </view>
+
+  <view class="support-body">
+    <view class="mode-notice"><view>!</view><view><text>MOCK PAYMENT · 不会真实扣款</text><text>这是 Checkpoint A 交互演示，未接入微信支付。</text></view></view>
+
+    <view class="support-section">
+      <view class="section-head"><text class="section-index">01</text><view><text class="section-title">PICK A BOOST</text><text>只给服务器续命，不给舞力加分</text></view></view>
+      <view class="amount-grid"><button wx:for="{{amounts}}" wx:key="*this" data-value="{{item}}" bindtap="selectAmount" class="amount-card {{selectedAmount === item ? 'selected' : ''}}"><text>¥</text><view>{{item}}</view><text>{{item === 1 ? 'A LITTLE LOVE' : item === 5 ? 'KEEP IT ON' : item === 10 ? 'FUEL THE GROOVE' : 'SCENE BUILDER ENERGY'}}</text></button></view>
+      <button class="custom-amount" bindtap="toggleCustomAmount"><text>＋</text><view><text>CUSTOM AMOUNT</text><text>¥1–¥500 · MOCK ONLY</text></view><text>→</text></button>
+      <view wx:if="{{customAmountOpen}}" class="custom-input"><text>¥</text><input type="number" value="{{selectedAmount}}" bindinput="updateCustomAmount"/><text>MOCK</text></view>
+    </view>
+
+    <view class="support-section">
+      <view class="section-head"><text class="section-index">02</text><view><text class="section-title">LEAVE A NOTE</text><text>会展示在 Supporters Wall（如果你愿意）</text></view></view>
+      <view class="note-box"><textarea value="{{message}}" maxlength="60" auto-height bindinput="updateMessage"/><text>{{messageLength}} / 60</text><view class="note-sticker">GOOD<br/>VIBES</view></view>
+      <button class="option-row" bindtap="toggleAnonymous"><view><view>匿名支持</view><text>墙上显示 “A friend of the scene”</text></view><view class="switch {{anonymous ? 'on' : ''}}"><view></view></view></button>
+      <button class="option-row" bindtap="toggleWall"><view><view>出现在 Supporters Wall</view><text>不显示金额，不做排行榜</text></view><view class="switch {{showOnWall ? 'on' : ''}}"><view></view></view></button>
+    </view>
+
+    <view class="impact-card"><text>WHERE IT GOES</text><view class="impact-row"><view><text>52%</text><view>SERVER<br/>+ TOOLS</view></view><view><text>31%</text><view>DESIGN<br/>+ BUILD</view></view><view><text>17%</text><view>SCENE<br/>OPS</view></view></view><text class="impact-note">示意比例，正式上线前将按真实运营情况披露。</text></view>
+
+    <view class="supporters-preview"><view class="section-head"><text class="section-index">03</text><view><text class="section-title">WALL LOVE</text><text>最近的匿名与公开留言</text></view></view><view class="wall-notes"><view class="wall-note yellow">“Keep Beijing grooving.”<text>— KIKI</text></view><view class="wall-note violet">“For the next circle.”<text>— A FRIEND</text></view></view></view>
+  </view>
+
+  <view class="support-dock"><view><text>MOCK TOTAL</text><view>¥{{selectedAmount}}.00</view></view><button class="primary-button" bindtap="submitSupport" disabled="{{submitting || !featureEnabled}}">{{!featureEnabled ? 'MOCK SUPPORT OFF' : submitting ? 'SIMULATING…' : 'SUPPORT THE SCENE →'}}</button></view>
+
+  <view wx:if="{{success}}" class="success-overlay">
+    <view class="confetti"><text>●</text><text>■</text><text>▲</text><text>●</text><text>◆</text></view><view class="success-disc"><view>♥</view></view><text class="eyebrow">MOCK SUPPORT COMPLETE</text><view class="success-title">YOU KEPT THE<br/>CIRCLE <text>MOVING.</text></view><text class="success-copy">没有真实扣款，也没有增加舞力或特权。<br/>订单 {{orderNo}}</text><button class="primary-button" bindtap="closeSuccess">BACK TO THE SCENE</button>
+  </view>
+</view>

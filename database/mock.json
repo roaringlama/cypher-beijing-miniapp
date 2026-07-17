@@ -1,0 +1,89 @@
+{
+  "users": [
+    {
+      "_id": "user_momo",
+      "dancerName": "MOMO W.",
+      "nickname": "MOMO",
+      "avatarUrl": "mock://avatar/momo",
+      "district": "朝阳",
+      "primaryStyle": "Popping",
+      "otherStyles": ["Hip-Hop"],
+      "styleTags": ["Funk", "Boogaloo"],
+      "danceYears": 6,
+      "crew": "DAYBREAK",
+      "bio": "Keep it loose. Keep it honest.",
+      "visibility": {"instagram": true, "douyin": false, "crew": true},
+      "points": 86,
+      "levelId": "in-the-circle",
+      "stats": {"completedActivities": 18, "hostedActivities": 4, "noShows": 0},
+      "badges": ["reliable-groover"],
+      "createdAt": "2026-07-15T10:00:00.000Z",
+      "updatedAt": "2026-07-15T10:00:00.000Z"
+    }
+  ],
+  "activities": [
+    {
+      "_id": "activity_funk_after_dark",
+      "type": "cypher",
+      "organizerId": "user_lolo",
+      "title": "FUNK AFTER DARK",
+      "danceStyles": ["Popping", "Locking"],
+      "styleTags": ["Funk", "All Level"],
+      "description": "一晚只放让身体想动的 Funk。",
+      "musicDirection": "70s Funk · G-Funk · Talkbox",
+      "startsAt": "2026-07-18T19:30:00+08:00",
+      "endsAt": "2026-07-18T22:30:00+08:00",
+      "district": "东城",
+      "venueName": "鼓楼附近 · B1 Studio",
+      "address": "虚构地址，仅供 Mock",
+      "addressVisibility": "approved_only",
+      "minParticipants": 8,
+      "maxParticipants": 24,
+      "beginnerFriendly": true,
+      "entryRequirements": "Respect the circle.",
+      "filming": true,
+      "publishVideoAllowed": true,
+      "costNote": "预计 ¥35/人",
+      "joinMode": "direct",
+      "notes": ["计划有变请尽早退出"],
+      "status": "published",
+      "counts": {"approved": 17, "pending": 0},
+      "createdAt": "2026-07-15T10:00:00.000Z",
+      "updatedAt": "2026-07-15T10:00:00.000Z"
+    }
+  ],
+  "registrations": [
+    {"_id":"registration_1","activityId":"activity_funk_after_dark","userId":"user_momo","status":"approved","message":"Ready to groove.","idempotencyKey":"mock-registration-1","createdAt":"2026-07-15T10:00:00.000Z","updatedAt":"2026-07-15T10:00:00.000Z"}
+  ],
+  "attendance": [
+    {"_id":"attendance_1","activityId":"activity_previous","userId":"user_momo","status":"present","checkedInAt":"2026-07-12T12:00:00.000Z","confirmedBy":"user_host","idempotencyKey":"mock-attendance-1","createdAt":"2026-07-12T12:00:00.000Z","updatedAt":"2026-07-12T12:00:00.000Z"}
+  ],
+  "pointLedger": [
+    {"_id":"point_1","userId":"user_momo","delta":5,"reason":"完成参加一场活动","sourceType":"attendance","sourceId":"activity_previous","idempotencyKey":"mock-point-1","balanceAfter":86,"createdAt":"2026-07-12T13:00:00.000Z","createdBy":"system"}
+  ],
+  "levelConfigs": [
+    {"_id":"in-the-circle","code":"LV3","name":"In the Circle","minPoints":50,"maxPoints":99,"badge":"CIRCLE","enabled":true,"version":1}
+  ],
+  "privilegeConfigs": [
+    {"_id":"boost-monthly","code":"BOOST_MONTHLY","name":"Monthly Boost","description":"每月一次活动 Boost","minimumLevel":"in-the-circle","quota":1,"featureFlag":"boost","enabled":false,"version":1}
+  ],
+  "userPrivileges": [
+    {"_id":"privilege_1","userId":"user_momo","privilegeCode":"BOOST_MONTHLY","period":"2026-07","remaining":1,"source":"level","grantedAt":"2026-07-01T00:00:00.000Z","expiresAt":"2026-08-01T00:00:00.000Z","updatedAt":"2026-07-01T00:00:00.000Z"}
+  ],
+  "platformSupportOrders": [
+    {"_id":"support_1","orderNo":"MOCK-000001","userId":"user_momo","amountFen":500,"message":"Keep the circle moving!","anonymous":false,"showOnWall":true,"status":"mock_paid","provider":"mock","idempotencyKey":"mock-support-1","providerTransactionId":"MOCK-TX-1","createdAt":"2026-07-15T10:00:00.000Z","updatedAt":"2026-07-15T10:00:00.000Z","paidAt":"2026-07-15T10:00:00.000Z"}
+  ],
+  "supporterWallEntries": [
+    {"_id":"wall_1","orderId":"support_1","displayName":"KIKI","message":"Keep Beijing grooving.","anonymous":false,"status":"approved","createdAt":"2026-07-15T10:00:00.000Z"}
+  ],
+  "feedback": [
+    {"_id":"feedback_1","userId":"user_momo","category":"experience","content":"希望增加更多区域筛选。","contactAllowed":false,"status":"new","createdAt":"2026-07-15T10:00:00.000Z","updatedAt":"2026-07-15T10:00:00.000Z"}
+  ],
+  "reports": [
+    {"_id":"report_1","reporterId":"user_mock_reporter","targetType":"activity","targetId":"activity_mock_closed","reason":"inaccurate_information","details":"用于权限测试的虚构举报。","status":"open","evidenceRefs":[],"createdAt":"2026-07-15T10:00:00.000Z","updatedAt":"2026-07-15T10:00:00.000Z"}
+  ],
+  "featureFlags": [
+    {"_id":"flag_cypher","key":"activity.cypher","enabled":true,"audience":"all","value":true,"description":"Enable Cypher activities.","version":1,"updatedAt":"2026-07-15T10:00:00.000Z"},
+    {"_id":"flag_party","key":"activity.party","enabled":false,"audience":"none","value":false,"description":"Reserve Party activities.","version":1,"updatedAt":"2026-07-15T10:00:00.000Z"}
+  ]
+}

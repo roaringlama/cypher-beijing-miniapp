@@ -1,0 +1,24 @@
+page {
+  --color-ink-950: #0b0812;
+  --color-ink-900: #151021;
+  --color-ink-800: #21182f;
+  --color-paper: #f7f1ff;
+  --color-muted: #a79bb6;
+  --color-acid: #d7ff3f;
+  --color-tangerine: #ff7849;
+  --color-ice: #62e7ff;
+  --color-violet: #a77bff;
+  --color-danger: #ff5f7d;
+  --radius-card: 28rpx;
+  --radius-small: 18rpx;
+  --radius-pill: 999rpx;
+  --space-1: 8rpx;
+  --space-2: 16rpx;
+  --space-3: 24rpx;
+  --space-4: 32rpx;
+  --space-5: 48rpx;
+  --shadow-card: 0 18rpx 60rpx rgba(0, 0, 0, 0.28);
+  --motion-fast: 120ms;
+  --motion-card: 220ms;
+}
+

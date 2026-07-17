@@ -1,0 +1,59 @@
+<view class="page-shell home {{reducedMotion ? 'reduced-motion' : ''}}">
+  <view class="ambient ambient-one"></view>
+  <view class="ambient ambient-two"></view>
+
+  <view class="topbar">
+    <view>
+      <text class="eyebrow">BEIJING · WED 15 JUL</text>
+      <view class="wordmark">CYPHER<text>///</text></view>
+    </view>
+    <button class="avatar-button" bindtap="openProfile" aria-label="打开个人主页">
+      <text>MW</text><view class="status-dot"></view>
+    </button>
+  </view>
+
+  <view class="hero">
+    <view class="vinyl" aria-hidden="true"><view class="vinyl-label">BJ</view></view>
+    <view class="hero-kicker">NOT EVERY DANCE<br/>NEEDS A WINNER.</view>
+    <view class="display">FIND YOUR<text class="outline"> CIRCLE.</text></view>
+    <view class="hero-copy">今晚不比输赢。找一首歌，进一个圈。</view>
+  </view>
+
+  <scroll-view class="filter-scroll" scroll-x enhanced show-scrollbar="false">
+    <view class="filter-row">
+      <button wx:for="{{filters}}" wx:key="*this" data-value="{{item}}" bindtap="selectFilter" class="filter-chip {{activeFilter === item ? 'active' : ''}}">{{item}}</button>
+    </view>
+  </scroll-view>
+
+  <view class="section-heading">
+    <view><text class="section-number">03</text><text class="section-title">UPCOMING DROPS</text></view>
+    <text class="pulse-label">● LIVE LIST</text>
+  </view>
+
+  <view class="activity-list">
+    <button wx:for="{{activities}}" wx:key="id" data-id="{{item.id}}" class="activity-card tone-{{item.coverTone}}" bindtap="openActivity">
+      <view class="date-stub"><text class="date-day">{{item.day}}</text><text class="date-month">{{item.month}}</text></view>
+      <view class="activity-body">
+        <view class="activity-meta"><text>{{item.district}}</text><text>·</text><text>{{item.time}}</text></view>
+        <view class="activity-title">{{item.title}}</view>
+        <view class="tag-row"><text wx:for="{{item.styleTags}}" wx:key="*this" class="mini-tag">{{item}}</text></view>
+        <view class="card-foot">
+          <text>{{item.participantCount}} / {{item.maxParticipants}} IN</text>
+          <text class="spots">{{item.spotsLeft}} SPOTS →</text>
+        </view>
+      </view>
+      <view class="card-wave">∿∿∿</view>
+    </button>
+  </view>
+
+  <button class="support-card" bindtap="openSupport">
+    <view><text class="support-kicker">KEEP THE CIRCLE MOVING</text><view class="support-title">Support the Scene</view></view>
+    <view class="support-arrow">↗</view>
+  </button>
+
+  <view class="bottom-nav">
+    <button class="nav-item active"><view class="nav-glyph">◉</view><text>FIND</text></button>
+    <button class="nav-create" bindtap="openCreate"><text>＋</text></button>
+    <button class="nav-item" bindtap="openProfile"><view class="nav-glyph">◎</view><text>ME</text></button>
+  </view>
+</view>

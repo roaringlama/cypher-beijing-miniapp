@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": ".test-build",
+    "rootDir": ".",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "declaration": false
+  },
+  "include": ["miniprogram/shared/**/*.ts", "miniprogram/services/**/*.ts", "tests/**/*.ts", "typings/**/*.d.ts"]
+}
+

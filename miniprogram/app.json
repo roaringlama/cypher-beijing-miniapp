@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/activity-detail/index",
+    "pages/create/index",
+    "pages/profile/index",
+    "pages/support/index"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#0B0812",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
+

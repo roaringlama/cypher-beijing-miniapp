@@ -1,0 +1,5 @@
+{
+  "desc": "Cypher Beijing Phase 1 prototype",
+  "rules": [{ "action": "disallow", "page": "*" }]
+}
+

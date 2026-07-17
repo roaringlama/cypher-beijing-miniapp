@@ -1,0 +1,25 @@
+{
+  "name": "cypher-beijing-miniapp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cypher Beijing native WeChat mini program",
+  "scripts": {
+    "lint": "node tools/lint.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node tools/run-tests.mjs",
+    "model:check": "node tools/check-data-model.mjs",
+    "secrets:scan": "node tools/scan-secrets.mjs",
+    "audio:generate": "node tools/generate-audio.mjs",
+    "db:seed:plan": "node database/init/seed.mjs --dry-run",
+    "build": "node tools/build.mjs",
+    "verify": "npm run lint && npm run typecheck && npm run test && npm run model:check && npm run secrets:scan && npm run build",
+    "preview": "node tools/preview-server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}

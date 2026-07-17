@@ -1,0 +1,7 @@
+{
+  "description": "Copy to project.private.config.json and add local-only settings. Never commit a real AppID or cloud environment ID.",
+  "setting": {
+    "compileHotReLoad": true
+  }
+}
+

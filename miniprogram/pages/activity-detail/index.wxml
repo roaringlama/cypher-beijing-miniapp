@@ -1,0 +1,69 @@
+<view class="detail {{reducedMotion ? 'reduced-motion' : ''}}">
+  <view class="poster">
+    <view class="poster-glow"></view>
+    <view class="top-actions">
+      <button class="round-action" bindtap="goBack">←</button>
+      <button class="round-action" bindtap="shareActivity">↗</button>
+    </view>
+    <view class="poster-stamp">CYPHER<br/>NO. 017</view>
+    <view class="poster-wave">∿ ∿ ∿ ∿</view>
+    <view class="poster-content">
+      <text class="eyebrow">SATURDAY NIGHT · DONGCHENG</text>
+      <view class="poster-title">{{titleTop}}<br/><text>{{titleBottom}}</text></view>
+      <view class="poster-subtitle">{{activity.musicDirection}}</view>
+    </view>
+    <view class="scribble">JUST STEP IN ↘</view>
+  </view>
+
+  <view class="detail-body">
+    <view class="ticket-row">
+      <view class="ticket-cell"><text class="ticket-label">WHEN</text><view class="ticket-value">{{dateLabel}}</view><text>{{timeLabel}}</text></view>
+      <view class="ticket-cell"><text class="ticket-label">WHERE</text><view class="ticket-value">{{activity.district}}区</view><text>{{activity.venueName}}</text></view>
+      <view class="ticket-cell last"><text class="ticket-label">CIRCLE</text><view class="ticket-value">{{activity.participantCount}} / {{activity.maxParticipants}}</view><text>{{activity.maxParticipants - activity.participantCount}} spots left</text></view>
+    </view>
+
+    <view class="vibe-tags">
+      <text wx:for="{{activity.styleTags}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <view class="content-section">
+      <text class="eyebrow">THE VIBE</text>
+      <view class="section-copy">{{activity.description}}</view>
+    </view>
+
+    <view class="host-card card">
+      <view class="host-avatar">LO</view>
+      <view class="host-main"><text class="host-label">HOSTED BY</text><view class="host-name">{{activity.organizer.dancerName}}</view><text class="muted">{{activity.organizer.primaryStyle}} · Groove Keeper</text></view>
+      <view class="reliable-badge">100%<text>SHOW-UP</text></view>
+    </view>
+
+    <view class="content-section info-grid">
+      <view><text class="info-icon">⌁</text><view><text class="info-title">地址保护</text><text class="muted info-copy">{{activity.addressHint}}</text></view></view>
+      <view><text class="info-icon">♫</text><view><text class="info-title">音乐方向</text><text class="muted info-copy">{{activity.musicDirection}}</text></view></view>
+      <view><text class="info-icon">◎</text><view><text class="info-title">新手友好</text><text class="muted info-copy">先在外圈感受也完全 OK</text></view></view>
+      <view><text class="info-icon">¥</text><view><text class="info-title">场地费用</text><text class="muted info-copy">{{activity.costNote}}</text></view></view>
+    </view>
+
+    <view class="house-rules">
+      <text class="eyebrow">HOUSE NOTES</text>
+      <view wx:for="{{activity.notes}}" wx:key="*this" class="rule"><text>0{{index + 1}}</text><view>{{item}}</view></view>
+    </view>
+  </view>
+
+  <view class="join-dock">
+    <view><text class="dock-label">{{dateLabel}}</text><view class="dock-cost">{{activity.costNote}}</view></view>
+    <button class="primary-button join-button {{joined ? 'joined' : ''}}" bindtap="toggleJoin">{{joined ? 'YOU’RE IN ✓' : 'STEP INTO THE CIRCLE →'}}</button>
+  </view>
+
+  <view wx:if="{{joinOpen}}" class="sheet-backdrop" bindtap="toggleJoin">
+    <view class="join-sheet" catchtap="noop">
+      <view class="sheet-handle"></view>
+      <text class="eyebrow">ONE LAST CHECK</text>
+      <view class="sheet-title">Ready to step in?</view>
+      <view class="join-summary"><text>{{activity.title}}</text><text>{{dateLabel}} · {{timeLabel}}</text><text>{{activity.district}}区 · {{activity.addressHint}}</text></view>
+      <view class="promise"><text>✓</text><view><view>Circle promise</view><text>如果计划有变，我会尽早退出，把位置留给别人。</text></view></view>
+      <button class="primary-button" bindtap="confirmJoin" disabled="{{submitting}}">{{submitting ? 'JOINING…' : 'YES, I’M IN'}}</button>
+      <button class="not-now" bindtap="toggleJoin">NOT THIS TIME</button>
+    </view>
+  </view>
+</view>
